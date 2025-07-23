@@ -2,8 +2,11 @@ version: '3.8'
 
 services:
   flask-app:
-    build: .
-    container_name: bonjour-flask-app
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: flask-app:latest
+    container_name: flask-app
     ports:
       - "5000:5000"
     environment:
@@ -20,7 +23,7 @@ services:
   # Optional: Add a reverse proxy (nginx) for production
   nginx:
     image: nginx:alpine
-    container_name: bonjour-nginx
+    container_name: nginx
     ports:
       - "80:80"
     volumes:
